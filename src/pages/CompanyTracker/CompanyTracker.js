@@ -106,7 +106,7 @@ function CompanyTracker() {
 
   return (
     <div className="tracker-container">
-      <h1>Placement Application Tracker</h1>
+      <h1>Company Application Tracker</h1>
 
       {error && <div className="error-message">{error}</div>}
 

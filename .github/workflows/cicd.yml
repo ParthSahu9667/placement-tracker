@@ -3,7 +3,7 @@ name: Deploy Placement Tracker
 on:
   push:
     branches:
-      - master  # Only deploys when you push to the main branch
+      - master  # Only deploys when you push to the master branch
 
 jobs:
   deploy:
@@ -25,7 +25,7 @@ jobs:
             cd ~/placement-tracker
             
             # 2. Pull the latest code from GitHub
-            git pull origin main
+            git pull origin master
             
             # 3. Update Backend
             npm install
