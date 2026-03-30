@@ -3,7 +3,7 @@ name: Deploy Placement Tracker
 on:
   push:
     branches:
-      - main  # Trigger only when you push to the main branch
+      - main  # Only deploys when you push to the main branch
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@master
@@ -21,16 +21,19 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
+            # 1. Enter the project directory
             cd ~/placement-tracker
+            
+            # 2. Pull the latest code from GitHub
             git pull origin main
             
-            # Update Backend
+            # 3. Update Backend
             npm install
             pm2 restart backend
             
-            # Update Frontend (The "Baking" Step)
-            # Note: We use the relative /api we set up earlier
+            # 4. Update Frontend (The "Baking" Step)
+            # We pass the relative path directly to the build command
             REACT_APP_API_URL=/api npm run build
             
-            # Final Sync
+            # 5. Refresh Nginx to serve the new build files
             sudo systemctl restart nginx
