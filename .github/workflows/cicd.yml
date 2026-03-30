@@ -3,7 +3,7 @@ name: Deploy Placement Tracker
 on:
   push:
     branches:
-      - main  # Only deploys when you push to the main branch
+      - master  # Only deploys when you push to the main branch
 
 jobs:
   deploy:
