@@ -50,7 +50,7 @@ const CompanyForm = ({ onAddCompany }) => {
         name="role"
         value={newCompany.role}
         onChange={handleInputChange}
-        placeholder="Role (e.g. SDE Intern)"
+        placeholder="Role (e.g., SDE Intern)"
         required
       />
       <NeumorphicDatePicker 
