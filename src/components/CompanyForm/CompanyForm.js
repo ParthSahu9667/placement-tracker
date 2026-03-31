@@ -36,7 +36,7 @@ const CompanyForm = ({ onAddCompany }) => {
 
   return (
     <form onSubmit={handleSubmit} className="add-company-form">
-      <h2>Add New Opportunity</h2>
+      <h2>Add new opportunity</h2>
       <input
         type="text"
         name="name"
